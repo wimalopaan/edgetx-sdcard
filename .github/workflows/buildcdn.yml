@@ -60,7 +60,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy latest prerelease
         if: github.ref == 'refs/heads/master'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: latest
           target_commitish: ${{ github.sha }}
@@ -71,7 +71,7 @@ jobs:
             dist/*
             sdcard.json
       - name: Auto Create Draft Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         if: startsWith(github.event.ref, 'refs/tags/v')
         with:
           tag_name: ${{ github.ref_name }}
